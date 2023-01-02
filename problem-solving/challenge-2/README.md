@@ -1,6 +1,6 @@
 # Dice Numbers Calculator
 
-You will receive three differente values as parameters, each value represents a single dice number. Your goal is to calculate the final result for this dices play.
+You will receive three different values as parameters, each value represents a single dice number. Your goal is to calculate the final result for this dices play.
 
 If you receive three dices with the same number, you should return the number multiplied by 3. If the result is two numbers equals, you should return the number multiplied by 2. If there are no equal numbers, you should return the biggest of them.
 
@@ -19,10 +19,10 @@ Example 2:
 - Dice 2: 1
 - Dice 3: 4
 
-Example 1:
+Example 3:
 - Dice 1: 3
 - Dice 2: 3
-- Dice 2: 3
+- Dice 3: 3
 ```
 
 Based on the examples above, you should return the value that represents the correct number value.
