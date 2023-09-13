@@ -27,11 +27,7 @@
     "db:rollback:all": "npm run knex -- migrate:rollback --all",
     "db:reset": "npm run db:rollback:all && npm run db:setup",
     "db:seed": "npm run knex -- seed:run",
-    "db:setup": "npm run db:migrate && npm run db:seed",
-    "test:challenge-1": "jest --config=jest.problem-solving.config.js ./problem-solving/challenge-1/index.spec.ts",
-    "test:challenge-2": "jest --config=jest.problem-solving.config.js ./problem-solving/challenge-2/index.spec.ts",
-    "test:challenge-3": "jest --config=jest.problem-solving.config.js ./problem-solving/challenge-3/index.spec.ts",
-    "test:all-challenges": "jest --config=jest.problem-solving.config.js ./problem-solving"
+    "db:setup": "npm run db:migrate && npm run db:seed"
   },
   "keywords": [],
   "author": "",
