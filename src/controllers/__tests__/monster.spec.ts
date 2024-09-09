@@ -4,6 +4,7 @@ import { StatusCodes } from 'http-status-codes';
 
 import factories from '../../factories';
 import { Monster } from '../../models';
+import path from 'path';
 
 const server = app.listen();
 
@@ -91,16 +92,45 @@ describe('MonsterController', () => {
   });
 
   describe('Import CSV', () => {
-    test('should fail when importing csv file with an empty monster', () => {
-      // @TODO
+    test('should fail when importing csv file with an empty monster', async () => {
+      const filePath = path.join(
+        __dirname,
+        '../../../data/monsters-empty-monster.csv'
+      );
+
+      const response = await request(server)
+        .post('/monsters/import')
+        .attach('monsters', filePath);
+
+      expect(response.status).toBe(StatusCodes.BAD_REQUEST);
+      expect(response.body.message).toBe('Wrong data mapping.');
     });
 
-    test('should fail when importing csv file with wrong or inexistent columns.', () => {
-      // @TODO
+    test('should fail when importing csv file with wrong or inexistent columns.', async () => {
+      const filePath = path.join(
+        __dirname,
+        '../../../data/monsters-wrong-column.csv'
+      );
+
+      const response = await request(server)
+        .post('/monsters/import')
+        .attach('monsters', filePath);
+
+      expect(response.status).toBe(StatusCodes.BAD_REQUEST);
+      expect(response.body.message).toBe('Wrong data mapping.');
     });
 
-    test('should import all the CSV objects into the database successfully', () => {
-      // @TODO
+    test('should import all the CSV objects into the database successfully', async () => {
+      const filePath = path.join(
+        __dirname,
+        '../../../data/monsters-correct.csv'
+      );
+
+      const response = await request(server)
+        .post('/monsters/import')
+        .attach('monsters', filePath);
+
+      expect(response.status).toBe(StatusCodes.CREATED);
     });
   });
 });
